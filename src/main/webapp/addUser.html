@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Add User | Sunrise Dental Clinic</title>
+
+    <style>
+      /* ================================
+           SUNRISE DENTAL CLINIC - ADD USER
+           ================================ */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        min-height: 100vh;
+
+        background: linear-gradient(135deg, #dff7fb, #f4fcfd);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 30px;
+        color: #24424f;
+      }
+
+      /* Main Container */
+
+      .user-container {
+        width: 100%;
+        max-width: 520px;
+
+        background: #ffffff;
+
+        border-radius: 22px;
+
+        padding: 40px 45px;
+
+        box-shadow: 0 15px 45px rgba(0, 105, 135, 0.15);
+
+        border-top: 6px solid #13a9b8;
+      }
+
+      /* Header */
+
+      .header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .tooth-icon {
+        font-size: 48px;
+        margin-bottom: 8px;
+      }
+
+      .clinic-name {
+        color: #087f94;
+        font-size: 27px;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .header h2 {
+        color: #344f5b;
+        font-size: 21px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .header p {
+        color: #81939b;
+        font-size: 14px;
+      }
+
+      /* Form */
+
+      form {
+        width: 100%;
+      }
+
+      .form-group {
+        margin-bottom: 21px;
+      }
+
+      label {
+        display: block;
+
+        margin-bottom: 8px;
+
+        color: #344f5b;
+
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      /* Inputs */
+
+      input,
+      select {
+        width: 100%;
+
+        padding: 13px 14px;
+
+        border: 1px solid #cbdde2;
+
+        border-radius: 9px;
+
+        font-size: 15px;
+
+        font-family: inherit;
+
+        color: #344f5b;
+
+        background: #fbfefe;
+
+        outline: none;
+
+        transition: 0.25s;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: #11a5b6;
+
+        box-shadow: 0 0 0 3px rgba(17, 165, 182, 0.12);
+
+        background: #ffffff;
+      }
+
+      input::placeholder {
+        color: #a2b0b5;
+      }
+
+      /* Add User Button */
+
+      .add-btn {
+        width: 100%;
+
+        padding: 14px;
+
+        margin-top: 8px;
+
+        border: none;
+
+        border-radius: 10px;
+
+        background: linear-gradient(135deg, #16afbd, #087e98);
+
+        color: #ffffff;
+
+        font-size: 16px;
+        font-weight: 600;
+
+        cursor: pointer;
+
+        box-shadow: 0 5px 14px rgba(8, 126, 152, 0.2);
+
+        transition: 0.25s;
+      }
+
+      .add-btn:hover {
+        background: linear-gradient(135deg, #20bfca, #066d87);
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 8px 18px rgba(8, 126, 152, 0.25);
+      }
+
+      .add-btn:active {
+        transform: translateY(0);
+      }
+
+      /* Back Button */
+
+      .back-section {
+        text-align: center;
+        margin-top: 22px;
+      }
+
+      .back-btn {
+        display: inline-block;
+
+        color: #087f94;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        text-decoration: none;
+
+        padding: 8px 15px;
+
+        border-radius: 7px;
+
+        transition: 0.2s;
+      }
+
+      .back-btn:hover {
+        background: #e8f8fa;
+      }
+
+      /* Footer */
+
+      .footer {
+        text-align: center;
+
+        margin-top: 25px;
+        padding-top: 18px;
+
+        border-top: 1px solid #e5eeee;
+
+        color: #96a4a9;
+
+        font-size: 12px;
+      }
+
+      /* Responsive */
+
+      @media (max-width: 600px) {
+        body {
+          padding: 20px;
+        }
+
+        .user-container {
+          padding: 30px 25px;
+        }
+
+        .clinic-name {
+          font-size: 23px;
+        }
+
+        .header h2 {
+          font-size: 19px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="user-container">
+      <!-- Header -->
+
+      <div class="header">
+        <div class="tooth-icon">🦷</div>
+
+        <div class="clinic-name">Sunrise Dental Clinic</div>
+
+        <h2>Add System User</h2>
+
+        <p>Create a new account for the clinic management system</p>
+      </div>
+
+      <!-- Add User Form -->
+
+      <form action="UserServlet" method="post">
+        <input type="hidden" name="action" value="add" />
+
+        <!-- Username -->
+
+        <div class="form-group">
+          <label for="username"> Username </label>
+
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter username"
+            required
+            minlength="3"
+            maxlength="50"
+          />
+        </div>
+
+        <!-- Password -->
+
+        <div class="form-group">
+          <label for="password"> Password </label>
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter password"
+            required
+            minlength="6"
+          />
+        </div>
+
+        <!-- Role -->
+
+        <div class="form-group">
+          <label for="role"> User Role </label>
+
+          <select id="role" name="role" required>
+            <option value="" disabled selected>Select user role</option>
+
+            <option value="admin">Admin</option>
+
+            <option value="staff">Staff</option>
+          </select>
+        </div>
+
+        <!-- Submit -->
+
+        <button type="submit" class="add-btn">＋ Add User</button>
+      </form>
+
+      <!-- Back -->
+
+      <div class="back-section">
+        <a href="adminDashboard.html" class="back-btn">
+          ← Back to Admin Dashboard
+        </a>
+      </div>
+
+      <!-- Footer -->
+
+      <div class="footer">Sunrise Dental Clinic Management System</div>
+    </div>
+  </body>
+</html>

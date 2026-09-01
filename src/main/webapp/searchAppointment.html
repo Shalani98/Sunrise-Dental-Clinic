@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Search Appointment | Sunrise Dental Clinic</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+
+        min-height: 100vh;
+
+        background: linear-gradient(135deg, #dff7fb, #f8fcfd);
+
+        color: #29464f;
+
+        padding: 35px 20px;
+      }
+
+      .page-container {
+        width: 100%;
+
+        max-width: 1200px;
+
+        margin: auto;
+      }
+
+      /* HEADER */
+
+      .page-header {
+        background: #ffffff;
+
+        border-radius: 20px;
+
+        padding: 30px;
+
+        margin-bottom: 25px;
+
+        text-align: center;
+
+        border-top: 6px solid #13a9b8;
+
+        box-shadow: 0 12px 35px rgba(0, 105, 135, 0.12);
+      }
+
+      .tooth-icon {
+        font-size: 45px;
+
+        margin-bottom: 7px;
+      }
+
+      .page-header h1 {
+        color: #087f94;
+
+        font-size: 30px;
+
+        margin-bottom: 5px;
+      }
+
+      .page-header h2 {
+        color: #455f69;
+
+        font-size: 21px;
+
+        margin-bottom: 8px;
+      }
+
+      .page-header p {
+        color: #80939a;
+
+        font-size: 14px;
+      }
+
+      /* SEARCH CARD */
+
+      .search-card {
+        background: white;
+
+        padding: 25px;
+
+        border-radius: 18px;
+
+        margin-bottom: 25px;
+
+        box-shadow: 0 10px 30px rgba(0, 105, 135, 0.1);
+      }
+
+      .search-card h3 {
+        color: #087f94;
+
+        margin-bottom: 18px;
+
+        font-size: 19px;
+      }
+
+      .search-row {
+        display: flex;
+
+        gap: 12px;
+
+        flex-wrap: wrap;
+      }
+
+      .search-input {
+        flex: 1;
+
+        min-width: 250px;
+
+        padding: 12px 14px;
+
+        border: 1px solid #bcdde1;
+
+        border-radius: 9px;
+
+        font-size: 14px;
+
+        outline: none;
+      }
+
+      .search-input:focus {
+        border-color: #13a9b8;
+
+        box-shadow: 0 0 0 3px rgba(19, 169, 184, 0.1);
+      }
+
+      .search-btn {
+        border: none;
+
+        padding: 12px 22px;
+
+        border-radius: 9px;
+
+        background: linear-gradient(135deg, #16afbd, #087e98);
+
+        color: white;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+      }
+
+      .search-btn:hover {
+        transform: translateY(-2px);
+
+        box-shadow: 0 5px 12px rgba(8, 126, 152, 0.25);
+      }
+
+      /* MESSAGE */
+
+      .message {
+        margin-top: 15px;
+
+        padding: 12px;
+
+        border-radius: 8px;
+
+        display: none;
+      }
+
+      .error {
+        background: #fde8e8;
+
+        color: #b73c3c;
+      }
+
+      .success {
+        background: #e3f7ec;
+
+        color: #24794a;
+      }
+
+      /* TABLE */
+
+      .table-card {
+        background: #ffffff;
+
+        padding: 25px;
+
+        border-radius: 18px;
+
+        box-shadow: 0 10px 30px rgba(0, 105, 135, 0.1);
+
+        overflow-x: auto;
+
+        display: none;
+      }
+
+      table {
+        width: 100%;
+
+        border-collapse: collapse;
+
+        min-width: 1050px;
+      }
+
+      thead {
+        background: linear-gradient(135deg, #0fa8b8, #087f94);
+
+        color: white;
+      }
+
+      th {
+        padding: 14px 12px;
+
+        text-align: left;
+
+        font-size: 13px;
+      }
+
+      td {
+        padding: 14px 12px;
+
+        border-bottom: 1px solid #e4eeee;
+
+        font-size: 13px;
+
+        color: #48616b;
+      }
+
+      /* STATUS */
+
+      .status {
+        display: inline-block;
+
+        padding: 6px 11px;
+
+        border-radius: 20px;
+
+        font-size: 12px;
+
+        font-weight: 600;
+      }
+
+      .status-pending {
+        background: #fff4d6;
+
+        color: #9b6900;
+      }
+
+      .status-paid {
+        background: #e3f7ec;
+
+        color: #24794a;
+      }
+
+      .status-completed {
+        background: #e6f2ff;
+
+        color: #2268a8;
+      }
+
+      .status-cancelled {
+        background: #fde8e8;
+
+        color: #b73c3c;
+      }
+
+      /* BILL BUTTON */
+
+      .bill-btn {
+        border: none;
+
+        padding: 9px 13px;
+
+        border-radius: 8px;
+
+        background: linear-gradient(135deg, #16afbd, #087e98);
+
+        color: white;
+
+        font-size: 12px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+      }
+
+      .bill-btn:disabled {
+        background: #b7c5ca;
+
+        cursor: not-allowed;
+      }
+
+      /* BACK BUTTON */
+
+      .back-section {
+        text-align: center;
+
+        margin-top: 25px;
+      }
+
+      .back-btn {
+        display: inline-block;
+
+        padding: 11px 22px;
+
+        background: white;
+
+        color: #087f94;
+
+        border: 1px solid #bcdde1;
+
+        border-radius: 9px;
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+        font-weight: 600;
+      }
+
+      .back-btn:hover {
+        background: #eaf8fa;
+      }
+
+      .footer {
+        text-align: center;
+
+        margin-top: 25px;
+
+        color: #8d9da3;
+
+        font-size: 12px;
+      }
+
+      @media (max-width: 700px) {
+        body {
+          padding: 20px 12px;
+        }
+
+        .page-header {
+          padding: 25px 18px;
+        }
+
+        .search-row {
+          flex-direction: column;
+        }
+
+        .search-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page-container">
+      <!-- HEADER -->
+
+      <div class="page-header">
+        <div class="tooth-icon">🦷</div>
+
+        <h1>Sunrise Dental Clinic</h1>
+
+        <h2>Search Appointment</h2>
+
+        <p>Search appointment details using the appointment number</p>
+      </div>
+
+      <!-- SEARCH -->
+
+      <div class="search-card">
+        <h3>Find Appointment</h3>
+
+        <div class="search-row">
+          <input
+            type="text"
+            id="appointmentNo"
+            class="search-input"
+            placeholder="Enter Appointment Number"
+            required
+          />
+
+          <button class="search-btn" onclick="searchAppointment()">
+            Search Appointment
+          </button>
+        </div>
+
+        <div id="message" class="message"></div>
+      </div>
+
+      <!-- RESULT TABLE -->
+
+      <div class="table-card" id="resultCard">
+        <table>
+          <thead>
+            <tr>
+              <th>Appointment No</th>
+
+              <th>Patient Name</th>
+
+              <th>Address</th>
+
+              <th>Contact</th>
+
+              <th>Dentist</th>
+
+              <th>Treatment</th>
+
+              <th>Date</th>
+
+              <th>Time</th>
+
+              <th>Status</th>
+
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="appointmentTable"></tbody>
+        </table>
+      </div>
+
+      <!-- BACK -->
+
+      <div class="back-section">
+        <a href="staffDashboard.html" class="back-btn">
+          ← Back to Staff Dashboard
+        </a>
+      </div>
+
+      <div class="footer">© 2026 Sunrise Dental Clinic Management System</div>
+    </div>
+
+    <script>
+      const table = document.getElementById("appointmentTable");
+
+      const resultCard = document.getElementById("resultCard");
+
+      const message = document.getElementById("message");
+
+      // ============================================
+      // LOAD ALL APPOINTMENTS AUTOMATICALLY
+      // WHEN PAGE OPENS
+      // ============================================
+
+      document.addEventListener("DOMContentLoaded", function () {
+        loadAllAppointments();
+      });
+
+      // ============================================
+      // LOAD ALL APPOINTMENTS
+      // ============================================
+
+      function loadAllAppointments() {
+        message.style.display = "none";
+
+        resultCard.style.display = "block";
+
+        table.innerHTML = `
+      <tr>
+        <td colspan="10"
+            style="text-align:center; padding:25px;">
+          Loading appointments...
+        </td>
+      </tr>
+    `;
+
+        fetch("SearchAppointmentServlet")
+          .then(async (response) => {
+            const data = await response.json();
+
+            if (!response.ok) {
+              throw new Error(data.message || "Unable to load appointments.");
+            }
+
+            return data;
+          })
+
+          .then((data) => {
+            if (!Array.isArray(data) || data.length === 0) {
+              table.innerHTML = `
+            <tr>
+              <td colspan="10"
+                  style="text-align:center; padding:25px;">
+                No appointments found.
+              </td>
+            </tr>
+          `;
+
+              return;
+            }
+
+            displayAppointments(data);
+          })
+
+          .catch((error) => {
+            console.error("Error loading appointments:", error);
+
+            table.innerHTML = `
+          <tr>
+            <td colspan="10"
+                style="text-align:center;
+                       color:#b73c3c;
+                       padding:25px;">
+              Unable to load appointments.
+            </td>
+          </tr>
+        `;
+
+            showMessage(error.message, "error");
+          });
+      }
+
+      // ============================================
+      // SEARCH BY APPOINTMENT NUMBER
+      // ============================================
+
+      function searchAppointment() {
+        const appointmentNo = document
+          .getElementById("appointmentNo")
+          .value.trim();
+
+        if (appointmentNo === "") {
+          // If search box is empty,
+          // simply show all appointments again.
+          loadAllAppointments();
+
+          return;
+        }
+
+        message.style.display = "none";
+
+        fetch(
+          "SearchAppointmentServlet?appointmentNo=" +
+            encodeURIComponent(appointmentNo),
+        )
+          .then(async (response) => {
+            const data = await response.json();
+
+            if (!response.ok) {
+              throw new Error(data.message || "Appointment not found.");
+            }
+
+            return data;
+          })
+
+          .then((appointment) => {
+            // Convert one appointment into an array
+            // so the same table function can be used.
+            displayAppointments([appointment]);
+
+            showMessage("Appointment found successfully.", "success");
+          })
+
+          .catch((error) => {
+            console.error(error);
+
+            resultCard.style.display = "none";
+
+            showMessage(error.message, "error");
+          });
+      }
+
+      // ============================================
+      // DISPLAY APPOINTMENTS
+      // ============================================
+
+      function displayAppointments(appointments) {
+        table.innerHTML = "";
+
+        resultCard.style.display = "block";
+
+        appointments.forEach((appointment) => {
+          const row = document.createElement("tr");
+
+          const status = appointment.status || "Pending";
+
+          let statusClass = "status-pending";
+
+          if (status.toLowerCase() === "paid") {
+            statusClass = "status-paid";
+          } else if (status.toLowerCase() === "completed") {
+            statusClass = "status-completed";
+          } else if (status.toLowerCase() === "cancelled") {
+            statusClass = "status-cancelled";
+          }
+
+          const disableBill = status.toLowerCase() === "paid";
+
+          row.innerHTML = `
+
+          <td>
+            ${escapeHtml(appointment.appointmentNo)}
+          </td>
+
+          <td>
+            ${escapeHtml(appointment.patientName)}
+          </td>
+
+          <td>
+            ${escapeHtml(appointment.address)}
+          </td>
+
+          <td>
+            ${escapeHtml(appointment.contactNumber)}
+          </td>
+
+          <td>
+            ${escapeHtml(appointment.dentistName)}
+          </td>
+
+          <td>
+            ${escapeHtml(appointment.treatmentName)}
+          </td>
+
+          <td>
+            ${escapeHtml(appointment.appointmentDate)}
+          </td>
+
+          <td>
+            ${escapeHtml(appointment.appointmentTime)}
+          </td>
+
+          <td>
+
+            <span
+              class="status ${statusClass}"
+            >
+              ${escapeHtml(status)}
+            </span>
+
+          </td>
+
+          <td>
+
+            <button
+              class="bill-btn"
+
+              onclick="
+                generateBill(
+                  '${escapeJs(appointment.appointmentNo)}'
+                )
+              "
+
+              ${disableBill ? "disabled" : ""}
+            >
+
+              ${disableBill ? "Paid" : "Generate Bill"}
+
+            </button>
+
+          </td>
+
+        `;
+
+          table.appendChild(row);
+        });
+      }
+
+      // ============================================
+      // MESSAGE
+      // ============================================
+
+      function showMessage(text, type) {
+        message.textContent = text;
+
+        message.className = "message " + type;
+
+        message.style.display = "block";
+      }
+
+      // ============================================
+      // GENERATE BILL
+      // ============================================
+
+      function generateBill(appointmentNo) {
+        window.location =
+          "bills.html?appointmentNo=" + encodeURIComponent(appointmentNo);
+      }
+
+      // ============================================
+      // SAFE HTML
+      // ============================================
+
+      function escapeHtml(value) {
+        if (value === null || value === undefined) {
+          return "";
+        }
+
+        return String(value)
+          .replaceAll("&", "&amp;")
+
+          .replaceAll("<", "&lt;")
+
+          .replaceAll(">", "&gt;")
+
+          .replaceAll('"', "&quot;")
+
+          .replaceAll("'", "&#039;");
+      }
+
+      function escapeJs(value) {
+        if (!value) {
+          return "";
+        }
+
+        return String(value)
+          .replaceAll("\\", "\\\\")
+
+          .replaceAll("'", "\\'");
+      }
+
+      // ============================================
+      // PRESS ENTER TO SEARCH
+      // ============================================
+
+      document
+        .getElementById("appointmentNo")
+        .addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            searchAppointment();
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Staff Help Guide | Sunrise Dental Clinic</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(135deg, #e3f8fb, #f8fcfd);
+        color: #29464f;
+        min-height: 100vh;
+      }
+
+      /* Header */
+
+      .header {
+        background: linear-gradient(135deg, #0fa8b8, #087f94);
+        color: white;
+        padding: 45px 20px;
+        text-align: center;
+        box-shadow: 0 6px 18px rgba(0, 105, 135, 0.18);
+      }
+
+      .header .tooth-icon {
+        font-size: 50px;
+        margin-bottom: 8px;
+      }
+
+      .header h1 {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+
+      .header h3 {
+        font-size: 21px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      .header p {
+        max-width: 700px;
+        margin: auto;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #e5f8fb;
+      }
+
+      /* Main Container */
+
+      .container {
+        width: 92%;
+        max-width: 1050px;
+        margin: 35px auto;
+      }
+
+      /* Cards */
+
+      .card {
+        background: white;
+        padding: 28px 30px;
+        margin-bottom: 24px;
+        border-radius: 18px;
+
+        box-shadow: 0 8px 25px rgba(0, 105, 135, 0.1);
+
+        border-left: 5px solid #15aab8;
+      }
+
+      .card h2 {
+        color: #087f94;
+        font-size: 21px;
+        margin-bottom: 20px;
+      }
+
+      /* Steps */
+
+      .step {
+        display: flex;
+        align-items: center;
+
+        background: #f4fbfc;
+
+        padding: 15px 17px;
+        margin: 12px 0;
+
+        border: 1px solid #dceff2;
+        border-radius: 11px;
+
+        line-height: 1.5;
+
+        transition: 0.2s;
+      }
+
+      .step:hover {
+        background: #eaf8fa;
+        transform: translateX(3px);
+      }
+
+      .number {
+        min-width: 36px;
+        height: 36px;
+
+        background: #11a5b6;
+        color: white;
+
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-right: 15px;
+
+        font-weight: 700;
+        font-size: 14px;
+
+        box-shadow: 0 3px 8px rgba(17, 165, 182, 0.2);
+      }
+
+      /* Warning Box */
+
+      .warning {
+        background: #fff8e9;
+
+        padding: 20px 24px;
+
+        border-left: 5px solid #f5a623;
+        border-radius: 10px;
+
+        color: #665226;
+      }
+
+      .warning ul {
+        padding-left: 22px;
+      }
+
+      .warning li {
+        margin: 10px 0;
+        line-height: 1.5;
+      }
+
+      /* Back Button */
+
+      .back-section {
+        text-align: center;
+        margin: 32px 0;
+      }
+
+      .back-btn {
+        display: inline-block;
+
+        padding: 12px 24px;
+
+        background: linear-gradient(135deg, #16afbd, #087e98);
+
+        color: white;
+
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+
+        border-radius: 9px;
+
+        box-shadow: 0 5px 14px rgba(8, 126, 152, 0.2);
+
+        transition: 0.25s;
+      }
+
+      .back-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(8, 126, 152, 0.25);
+      }
+
+      /* Footer */
+
+      .footer {
+        text-align: center;
+
+        padding: 22px;
+
+        color: #85979e;
+
+        font-size: 13px;
+
+        background: white;
+
+        border-top: 1px solid #dcebed;
+      }
+
+      /* Responsive */
+
+      @media (max-width: 650px) {
+        .header {
+          padding: 35px 20px;
+        }
+
+        .header h1 {
+          font-size: 26px;
+        }
+
+        .card {
+          padding: 22px 20px;
+        }
+
+        .step {
+          align-items: flex-start;
+        }
+
+        .number {
+          min-width: 32px;
+          height: 32px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="tooth-icon">🦷</div>
+
+      <h1>Sunrise Dental Clinic</h1>
+
+      <h3>Staff User Guide</h3>
+
+      <p>
+        Step-by-step instructions for managing patients, appointments and
+        billing.
+      </p>
+    </div>
+
+    <div class="container">
+      <!-- Login -->
+
+      <div class="card">
+        <h2>🔐 1. Login to System</h2>
+
+        <div class="step">
+          <div class="number">1</div>
+          Enter your authorized username and password.
+        </div>
+
+        <div class="step">
+          <div class="number">2</div>
+          Click Login.
+        </div>
+
+        <div class="step">
+          <div class="number">3</div>
+          After successful authentication, the Staff Dashboard will open.
+        </div>
+      </div>
+
+      <!-- Patient Registration -->
+
+      <div class="card">
+        <h2>👤 2. Register Patient Details</h2>
+
+        <div class="step">
+          <div class="number">1</div>
+          Open the Register Appointment page.
+        </div>
+
+        <div class="step">
+          <div class="number">2</div>
+          Enter the patient's full name, address and contact number.
+        </div>
+
+        <div class="step">
+          <div class="number">3</div>
+          Verify the entered details before continuing.
+        </div>
+      </div>
+
+      <!-- Appointment -->
+
+      <div class="card">
+        <h2>📅 3. Create New Appointment</h2>
+
+        <div class="step">
+          <div class="number">1</div>
+          Open Register Appointment from the Staff Dashboard.
+        </div>
+
+        <div class="step">
+          <div class="number">2</div>
+          Select the required dentist and treatment.
+        </div>
+
+        <div class="step">
+          <div class="number">3</div>
+          Select an appointment date and time.
+        </div>
+
+        <div class="step">
+          <div class="number">4</div>
+          Click Book Appointment.
+        </div>
+
+        <div class="step">
+          <div class="number">5</div>
+          The appointment information will be stored in the system.
+        </div>
+      </div>
+
+      <!-- Search Appointments -->
+
+      <div class="card">
+        <h2>🔍 4. Search Appointments</h2>
+
+        <div class="step">
+          <div class="number">1</div>
+          Open Search Appointment from the Staff Dashboard.
+        </div>
+
+        <div class="step">
+          <div class="number">2</div>
+          Search using the available appointment information.
+        </div>
+
+        <div class="step">
+          <div class="number">3</div>
+          Review the patient, dentist, treatment, date, time and status.
+        </div>
+
+        <div class="step">
+          <div class="number">4</div>
+          Select the required appointment before generating a bill.
+        </div>
+      </div>
+
+      <!-- Billing -->
+
+      <div class="card">
+        <h2>💰 5. Create Patient Bill</h2>
+
+        <div class="step">
+          <div class="number">1</div>
+          Open the billing page for the required appointment.
+        </div>
+
+        <div class="step">
+          <div class="number">2</div>
+          Verify the appointment number.
+        </div>
+
+        <div class="step">
+          <div class="number">3</div>
+          Enter the treatment cost.
+        </div>
+
+        <div class="step">
+          <div class="number">4</div>
+          The system automatically calculates: &nbsp;<strong
+            >Total Amount = Consultation Fee + Treatment Cost</strong
+          >
+        </div>
+
+        <div class="step">
+          <div class="number">5</div>
+          Click Create Bill to save the billing information.
+        </div>
+      </div>
+
+      <!-- Receipt -->
+
+      <div class="card">
+        <h2>🧾 6. Patient Receipt</h2>
+
+        <div class="step">
+          <div class="number">1</div>
+          Open the generated patient bill.
+        </div>
+
+        <div class="step">
+          <div class="number">2</div>
+          Verify the bill information and total amount.
+        </div>
+
+        <div class="step">
+          <div class="number">3</div>
+          Print or save the receipt if the system provides the print option.
+        </div>
+      </div>
+
+      <!-- Logout -->
+
+      <div class="card">
+        <h2>🚪 7. Logout</h2>
+
+        <div class="step">
+          <div class="number">1</div>
+          Finish all required tasks.
+        </div>
+
+        <div class="step">
+          <div class="number">2</div>
+          Click Logout from the Staff Dashboard.
+        </div>
+
+        <div class="step">
+          <div class="number">3</div>
+          Do not share your username or password with unauthorized users.
+        </div>
+      </div>
+
+      <!-- Rules -->
+
+      <div class="card">
+        <h2>⚠️ Important Rules</h2>
+
+        <div class="warning">
+          <ul>
+            <li>Verify patient information before creating an appointment.</li>
+
+            <li>Do not create duplicate bills for the same appointment.</li>
+
+            <li>Check dentist and treatment details carefully.</li>
+
+            <li>Keep patient information confidential.</li>
+
+            <li>Only authorized staff members should access the system.</li>
+
+            <li>Always logout after completing your work.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="back-section">
+        <a href="staffDashboard.html" class="back-btn">
+          ← Back to Staff Dashboard
+        </a>
+      </div>
+    </div>
+
+    <div class="footer">© 2026 Sunrise Dental Clinic | Staff Help Center</div>
+  </body>
+</html>

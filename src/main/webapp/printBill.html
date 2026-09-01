@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Patient Bill | Sunrise Dental Clinic</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(135deg, #dff7fb, #f8fcfd);
+        color: #29464f;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      /* Bill Container */
+
+      .bill-container {
+        width: 100%;
+        max-width: 650px;
+
+        margin: auto;
+
+        background: #ffffff;
+
+        border-radius: 18px;
+
+        box-shadow: 0 15px 45px rgba(0, 105, 135, 0.15);
+
+        overflow: hidden;
+      }
+
+      /* Clinic Header */
+
+      .bill-header {
+        text-align: center;
+
+        background: linear-gradient(135deg, #16afbd, #087e98);
+
+        color: white;
+
+        padding: 32px 25px;
+      }
+
+      .tooth-icon {
+        font-size: 45px;
+        margin-bottom: 5px;
+      }
+
+      .bill-header h1 {
+        font-size: 27px;
+        margin-bottom: 5px;
+      }
+
+      .bill-header p {
+        font-size: 13px;
+        color: #dcf6f8;
+      }
+
+      /* Bill Title */
+
+      .bill-title {
+        text-align: center;
+
+        padding: 22px;
+
+        border-bottom: 1px solid #e1eeee;
+      }
+
+      .bill-title h2 {
+        color: #087f94;
+        font-size: 21px;
+      }
+
+      .bill-title p {
+        margin-top: 5px;
+
+        color: #8a9ca3;
+
+        font-size: 13px;
+      }
+
+      /* Bill Information */
+
+      #bill {
+        padding: 30px 40px;
+      }
+
+      .bill-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 15px 5px;
+
+        border-bottom: 1px solid #e8eeee;
+      }
+
+      .bill-label {
+        color: #667d86;
+
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .bill-value {
+        color: #304b55;
+
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      /* Total */
+
+      .total-row {
+        margin-top: 20px;
+
+        padding: 20px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        background: #eaf9fb;
+
+        border: 2px solid #bde6eb;
+
+        border-radius: 10px;
+      }
+
+      .total-label {
+        color: #087f94;
+
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .total-value {
+        color: #087f94;
+
+        font-size: 21px;
+        font-weight: 700;
+      }
+
+      /* Thank You */
+
+      .thank-you {
+        text-align: center;
+
+        margin: 5px 40px 25px;
+
+        padding: 18px;
+
+        background: #f5fbfc;
+
+        border-radius: 10px;
+
+        color: #70868e;
+
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      /* Buttons */
+
+      .button-section {
+        display: flex;
+
+        justify-content: center;
+
+        gap: 12px;
+
+        padding: 0 40px 30px;
+      }
+
+      .print-btn {
+        border: none;
+
+        padding: 13px 25px;
+
+        border-radius: 9px;
+
+        background: linear-gradient(135deg, #16afbd, #087e98);
+
+        color: white;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        cursor: pointer;
+
+        transition: 0.25s;
+      }
+
+      .print-btn:hover {
+        transform: translateY(-2px);
+
+        box-shadow: 0 6px 15px rgba(8, 126, 152, 0.25);
+      }
+
+      .back-btn {
+        display: inline-block;
+
+        padding: 12px 24px;
+
+        border: 1px solid #bddde2;
+
+        border-radius: 9px;
+
+        color: #087f94;
+
+        text-decoration: none;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        transition: 0.2s;
+      }
+
+      .back-btn:hover {
+        background: #eaf8fa;
+      }
+
+      /* Loading */
+
+      .loading {
+        text-align: center;
+        color: #80949c;
+        padding: 30px;
+      }
+
+      /* Footer */
+
+      .footer {
+        text-align: center;
+
+        padding: 17px;
+
+        border-top: 1px solid #e1eeee;
+
+        color: #99a7ac;
+
+        font-size: 11px;
+      }
+
+      /* =====================
+           PRINT DESIGN
+           ===================== */
+
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+
+        .bill-container {
+          max-width: 100%;
+
+          box-shadow: none;
+
+          border: 1px solid #dddddd;
+
+          border-radius: 0;
+        }
+
+        .button-section {
+          display: none;
+        }
+
+        .bill-header {
+          background: white !important;
+          color: #222222;
+          border-bottom: 2px solid #087f94;
+        }
+
+        .bill-header p {
+          color: #555555;
+        }
+
+        .tooth-icon {
+          display: none;
+        }
+
+        .thank-you {
+          background: white;
+          border: 1px solid #dddddd;
+        }
+
+        .total-row {
+          background: white;
+        }
+      }
+
+      /* Mobile */
+
+      @media (max-width: 600px) {
+        body {
+          padding: 20px 12px;
+        }
+
+        #bill {
+          padding: 25px 20px;
+        }
+
+        .button-section {
+          padding: 0 20px 25px;
+          flex-direction: column;
+        }
+
+        .print-btn,
+        .back-btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bill-container">
+      <!-- Clinic Header -->
+
+      <div class="bill-header">
+        <div class="tooth-icon">🦷</div>
+
+        <h1>Sunrise Dental Clinic</h1>
+
+        <p>Dental Care & Patient Management</p>
+      </div>
+
+      <!-- Bill Heading -->
+
+      <div class="bill-title">
+        <h2>Patient Bill</h2>
+
+        <p>Official Payment Receipt</p>
+      </div>
+
+      <!-- Bill Data -->
+
+      <div id="bill">
+        <div class="loading">Loading bill information...</div>
+      </div>
+
+      <!-- Thank You -->
+
+      <div class="thank-you">
+        <strong>Thank you for choosing Sunrise Dental Clinic.</strong>
+
+        <br />
+
+        We appreciate your trust in our dental care services.
+      </div>
+
+      <!-- Buttons -->
+
+      <div class="button-section">
+        <button class="print-btn" onclick="window.print()">
+          🖨️ Print Bill
+        </button>
+
+        <a href="staffDashboard.html" class="back-btn"> ← Back to Dashboard </a>
+      </div>
+
+      <div class="footer">© 2026 Sunrise Dental Clinic</div>
+    </div>
+
+    <script>
+      // Get appointment number from URL
+
+      const params = new URLSearchParams(window.location.search);
+
+      const appointmentNo = params.get("appointmentNo");
+
+      // Check appointment number
+
+      if (!appointmentNo) {
+        document.getElementById("bill").innerHTML = `
+
+            <div class="loading">
+
+                No appointment number was provided.
+
+            </div>
+
+        `;
+      } else {
+        // Get bill information from servlet
+
+        fetch(
+          "PrintBillServlet?appointmentNo=" + encodeURIComponent(appointmentNo),
+        )
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Unable to load bill");
+            }
+
+            return response.json();
+          })
+
+          .then((bill) => {
+            document.getElementById("bill").innerHTML = `
+
+
+                <div class="bill-row">
+
+                    <span class="bill-label">
+                        Appointment Number
+                    </span>
+
+                    <span class="bill-value">
+                        ${bill.appointmentNo}
+                    </span>
+
+                </div>
+
+
+                <div class="bill-row">
+
+                    <span class="bill-label">
+                        Consultation Fee
+                    </span>
+
+                    <span class="bill-value">
+                        LKR ${Number(bill.consultationFee).toFixed(2)}
+                    </span>
+
+                </div>
+
+
+                <div class="bill-row">
+
+                    <span class="bill-label">
+                        Treatment Cost
+                    </span>
+
+                    <span class="bill-value">
+                        LKR ${Number(bill.treatmentCost).toFixed(2)}
+                    </span>
+
+                </div>
+
+
+                <div class="bill-row">
+
+                    <span class="bill-label">
+                        Bill Date
+                    </span>
+
+                    <span class="bill-value">
+                        ${bill.billDate}
+                    </span>
+
+                </div>
+
+
+                <div class="total-row">
+
+                    <span class="total-label">
+                        Total Amount
+                    </span>
+
+                    <span class="total-value">
+
+                        LKR ${Number(bill.totalAmount).toFixed(2)}
+
+                    </span>
+
+                </div>
+
+            `;
+          })
+
+          .catch((error) => {
+            console.error("Bill loading error:", error);
+
+            document.getElementById("bill").innerHTML = `
+
+                <div class="loading">
+
+                    Unable to load bill information.
+                    Please try again.
+
+                </div>
+
+            `;
+          });
+      }
+    </script>
+  </body>
+</html>

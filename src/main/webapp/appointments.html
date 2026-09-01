@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Book Dental Appointment | Sunrise Dental Clinic</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #dff7fb, #f7fcfd);
+        padding: 40px 20px;
+        color: #28444f;
+      }
+
+      .appointment-container {
+        width: 100%;
+        max-width: 760px;
+        margin: auto;
+
+        background: #ffffff;
+
+        border-radius: 22px;
+        padding: 40px 45px;
+
+        border-top: 6px solid #18aebb;
+
+        box-shadow: 0 15px 45px rgba(0, 105, 135, 0.15);
+      }
+
+      .page-header {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      .tooth-icon {
+        font-size: 48px;
+        margin-bottom: 8px;
+      }
+
+      .page-header h1 {
+        color: #087f94;
+        font-size: 29px;
+        margin-bottom: 5px;
+      }
+
+      .page-header h2 {
+        color: #445e69;
+        font-size: 21px;
+        margin-bottom: 8px;
+      }
+
+      .page-header p {
+        color: #83959d;
+        font-size: 14px;
+      }
+
+      form {
+        width: 100%;
+      }
+
+      .form-section {
+        margin-bottom: 30px;
+      }
+
+      .form-section h3 {
+        color: #087f94;
+        font-size: 18px;
+
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+
+        border-bottom: 2px solid #e1f1f4;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        color: #354f5a;
+      }
+
+      input,
+      select {
+        width: 100%;
+
+        padding: 13px 14px;
+
+        border: 1px solid #cbdde2;
+        border-radius: 9px;
+
+        background: #fbfefe;
+
+        font-family: inherit;
+        font-size: 15px;
+
+        color: #344f5b;
+
+        outline: none;
+
+        transition: 0.25s;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: #12a6b7;
+
+        background: #ffffff;
+
+        box-shadow: 0 0 0 3px rgba(18, 166, 183, 0.12);
+      }
+
+      input::placeholder {
+        color: #a6b3b8;
+      }
+
+      .book-btn {
+        width: 100%;
+
+        border: none;
+        border-radius: 10px;
+
+        padding: 15px;
+
+        background: linear-gradient(135deg, #16afbd, #087e98);
+
+        color: white;
+
+        font-size: 16px;
+        font-weight: 600;
+
+        cursor: pointer;
+
+        box-shadow: 0 5px 14px rgba(8, 126, 152, 0.2);
+
+        transition: 0.25s;
+      }
+
+      .book-btn:hover {
+        background: linear-gradient(135deg, #20bfca, #066d87);
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 8px 18px rgba(8, 126, 152, 0.25);
+      }
+
+      .book-btn:active {
+        transform: translateY(0);
+      }
+
+      .back-section {
+        text-align: center;
+        margin-top: 22px;
+      }
+
+      .back-btn {
+        display: inline-block;
+
+        padding: 9px 16px;
+
+        border-radius: 7px;
+
+        color: #087f94;
+
+        text-decoration: none;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        transition: 0.2s;
+      }
+
+      .back-btn:hover {
+        background: #e8f8fa;
+      }
+
+      .footer {
+        text-align: center;
+
+        margin-top: 26px;
+        padding-top: 18px;
+
+        border-top: 1px solid #e4eeee;
+
+        color: #95a4a9;
+
+        font-size: 12px;
+      }
+
+      @media (max-width: 650px) {
+        .appointment-container {
+          padding: 30px 24px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .page-header h1 {
+          font-size: 25px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="appointment-container">
+      <!-- Header -->
+
+      <div class="page-header">
+        <div class="tooth-icon">🦷</div>
+
+        <h1>Sunrise Dental Clinic</h1>
+
+        <h2>Book Dental Appointment</h2>
+
+        <p>Register a new patient appointment</p>
+      </div>
+
+      <form id="appointmentForm" action="AppointmentServlet" method="post">
+        <input type="hidden" name="action" value="add" />
+
+        <!-- Patient Details -->
+
+        <div class="form-section">
+          <h3>👤 Patient Details</h3>
+
+          <div class="form-group">
+            <label for="patientName"> Patient Name </label>
+
+            <input
+              type="text"
+              id="patientName"
+              name="patientName"
+              placeholder="Enter patient's full name"
+              required
+              minlength="3"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="address"> Address </label>
+
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Enter patient address"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="contactNumber"> Contact Number </label>
+
+            <input
+              type="tel"
+              id="contactNumber"
+              name="contactNumber"
+              placeholder="07XXXXXXXX"
+              required
+              pattern="[0-9]{10}"
+              maxlength="10"
+            />
+          </div>
+        </div>
+
+        <!-- Appointment Details -->
+
+        <div class="form-section">
+          <h3>📅 Appointment Details</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dentistId"> Select Dentist </label>
+
+              <select id="dentistId" name="dentistId" required>
+                <option value="">Select Dentist</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="treatmentId"> Select Treatment </label>
+
+              <select id="treatmentId" name="treatmentId" required>
+                <option value="">Select Treatment</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="appointmentDate"> Appointment Date </label>
+
+              <input
+                type="date"
+                id="appointmentDate"
+                name="appointmentDate"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="appointmentTime"> Appointment Time </label>
+
+              <input
+                type="time"
+                id="appointmentTime"
+                name="appointmentTime"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <input type="hidden" name="status" value="Pending" />
+
+        <button type="submit" class="book-btn">📅 Book Appointment</button>
+      </form>
+
+      <div class="back-section">
+        <a href="staffDashboard.html" class="back-btn">
+          ← Back to Staff Dashboard
+        </a>
+      </div>
+
+      <div class="footer">Sunrise Dental Clinic Management System</div>
+    </div>
+
+    <script>
+      // Prevent past appointment dates
+
+      const appointmentDate = document.getElementById("appointmentDate");
+
+      const today = new Date().toISOString().split("T")[0];
+
+      appointmentDate.min = today;
+
+      // Load Dentists
+
+      fetch("DentistServlet")
+        .then((response) => response.json())
+
+        .then((data) => {
+          const dentistSelect = document.getElementById("dentistId");
+
+          data.forEach((dentist) => {
+            const option = document.createElement("option");
+
+            option.value = dentist.dentistId;
+
+            option.text = dentist.dentistName;
+
+            dentistSelect.appendChild(option);
+          });
+        })
+
+        .catch((error) => {
+          console.error("Error loading dentists:", error);
+        });
+
+      // Load Treatments
+
+      fetch("TreatmentServlet")
+        .then((response) => response.json())
+
+        .then((data) => {
+          const treatmentSelect = document.getElementById("treatmentId");
+
+          data.forEach((treatment) => {
+            const option = document.createElement("option");
+
+            option.value = treatment.treatmentId;
+
+            option.text = treatment.treatmentName;
+
+            treatmentSelect.appendChild(option);
+          });
+        })
+
+        .catch((error) => {
+          console.error("Error loading treatments:", error);
+        });
+    </script>
+  </body>
+</html>

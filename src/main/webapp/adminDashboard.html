@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      body {
+        background: #f4f8fb;
+        font-family: Arial, sans-serif;
+      }
+
+      .dashboard {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+        text-align: center;
+      }
+
+      .dashboard h1 {
+        background: linear-gradient(135deg, #1976d2, #009688);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+      }
+
+      .menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .menu a {
+        text-decoration: none;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        color: #1976d2;
+        font-size: 18px;
+        font-weight: bold;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu a:hover {
+        background: #1976d2;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <h1>
+        🦷 Sunrise Dental Clinic<br />
+        Admin Dashboard
+      </h1>
+
+      <div class="menu">
+        <a href="users.html"> 👥 Manage Users </a>
+
+        <a href="help.html"> ❓ Help Guide </a>
+
+        <a href="LogoutServlet"> 🚪 Logout </a>
+      </div>
+    </div>
+  </body>
+</html>

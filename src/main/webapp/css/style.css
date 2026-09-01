@@ -1,0 +1,51 @@
+body{
+
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    text-align:center;
+
+}
+
+
+.container,
+.login-box,
+.dashboard{
+
+    background:white;
+    width:400px;
+    margin:100px auto;
+    padding:30px;
+    border-radius:10px;
+
+}
+
+
+input{
+
+    width:90%;
+    padding:10px;
+    margin:10px;
+
+}
+
+
+button,
+.btn{
+
+    background:#1976D2;
+    color:white;
+    padding:10px 20px;
+    border:none;
+    text-decoration:none;
+    cursor:pointer;
+
+}
+
+
+.menu a{
+
+    display:block;
+    margin:15px;
+    text-decoration:none;
+
+}
